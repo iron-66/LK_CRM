@@ -1,0 +1,18 @@
+.container {
+    margin-top: 18px;
+    padding-left: 67px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.header-name {
+    margin-left: 702px;
+    margin-right: 252px;
+    
+}
+
+.forms-button {
+    width: 404px;
+    height: 80px;
+}

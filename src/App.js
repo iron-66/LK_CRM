@@ -1,10 +1,14 @@
 import './App.css';
 
 import Header from './Components/Header';
+import MainPage from './Components/MainPage'
 
 function App() {
   return (
-    <Header message='Hello'/>
+    <div>
+      <Header message='Hello'/>
+      <MainPage></MainPage>
+    </div>
   );
 }
 
