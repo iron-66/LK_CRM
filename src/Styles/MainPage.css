@@ -16,3 +16,11 @@
     width: 404px;
     height: 80px;
 }
+
+.status-columns {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 5px;
+}

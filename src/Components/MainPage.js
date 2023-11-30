@@ -2,17 +2,34 @@ import React, {Component} from "react";
 import '../Styles/MainPage.css'
 
 import SettingsIcon from "../Files/SettingsIcon.svg"
+import Column from "./Column";
+
+const statues = ['Отправил(а) персональный данные', 
+    'Не прошёл(ла) тестирование', 
+    'Прошёл(ла) тестирование', 
+    'Добавлен(а) в орг. чат', 
+    'Приступил(а) к практике', 
+    'Завершил(а) прохождение практики',
+    'Удалён(а) с практики']
 
 class MainPage extends Component{
     constructor(props){
         super(props)
     }
     render() {
-        return <div className="container">
-                <img src={SettingsIcon}/>
-                <h2 className="header-name">Главная страница</h2>
-                <button className="forms-button">К формам и тестам</button>
-            </div>
+        return <div>
+                <div className="container">
+                    <img src={SettingsIcon}/>
+                    <h2 className="header-name">Главная страница</h2>
+                    <button className="forms-button">К формам и тестам</button>
+                </div>
+                <ul className="status-columns">
+                    {statues.map(status => (
+                        <Column name={status}></Column>
+                    ))}
+                </ul>
+        </div>
+        
     }
 }
 
