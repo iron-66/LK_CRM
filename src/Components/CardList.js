@@ -1,8 +1,8 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import { SliderPicker } from 'react-color';
 
 import Card from './Card'
-import '../Styles/Column.css'
+import '../Styles/CardList.css'
 
 const people = ['Соловьёв П. Д.', 'Аляскина Ф. Р.', 'Кукушкин П. Н.', 'Кефирова Р. О.', 'Рыбова В. Ф.', 'Филиппов В. Ф.', 'Аляскина Ф. Р.']
 

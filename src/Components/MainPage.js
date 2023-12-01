@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import '../Styles/MainPage.css'
 
 import SettingsIcon from "../Files/SettingsIcon.svg"
-import Column from "./Column";
+import CardList from './CardList'
 
 const statues = ['Отправил(а) персональные данные', 
     'Не прошёл(ла) тестирование', 
@@ -25,7 +25,7 @@ class MainPage extends Component{
                 </div>
                 <ul className="status-columns">
                     {statues.map(status => (
-                        <Column name={status}></Column>
+                        <CardList name={status}></CardList>
                     ))}
                 </ul>
         </div>

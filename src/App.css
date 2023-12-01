@@ -15,6 +15,10 @@ h2 {
     letter-spacing: normal;
 }
 
+.main-container {
+    overflow-y: scroll;
+}
+
 .hidden {
     margin: 0 !important;
     padding: 0 !important;
