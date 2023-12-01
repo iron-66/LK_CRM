@@ -19,7 +19,7 @@ class MainPage extends Component{
     render() {
         return <div>
                 <div className="container">
-                    <img src={SettingsIcon}/>
+                    <img className="settings-icon" src={SettingsIcon}/>
                     <h2 className="header-name">Главная страница</h2>
                     <button className="forms-button">К формам и тестам</button>
                 </div>

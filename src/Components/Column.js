@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import { SliderPicker } from 'react-color';
 
 import Card from './Card'
@@ -13,8 +13,10 @@ class Column extends Component{
         super(props)
     }
     render(){
-        return <li className="column-element">
-            <SliderPicker className="color-slider" ></SliderPicker> 
+        return <li style={{backgroundColor: this.color}} className="column-element">
+            <SliderPicker className="color-slider hidden" 
+                color={this.color}
+                /> 
             <div className="name-column"><h2>{this.props.name}</h2></div>
             <ul className="cards-list">
             {

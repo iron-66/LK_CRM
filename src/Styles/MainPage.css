@@ -24,3 +24,7 @@
     list-style: none;
     gap: 5px;
 }
+
+.settings-icon:hover {
+    filter: opacity(0.6);
+}
