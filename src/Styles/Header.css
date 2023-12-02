@@ -21,18 +21,17 @@
     margin-right: 30px;
 }
 
-a {
+.header a {
     gap: 10px;
     display: flex;
     align-items: center;
 }
 
-img {
+.header img {
     margin-top: 8px;
 }
 
-h1 {
-    font-family: Montserrat;
+.header h1 {
     font-size: 22px;
     font-style: normal;
     font-weight: 500;
