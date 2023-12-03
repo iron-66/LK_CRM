@@ -44,16 +44,65 @@
 
 .card-information {
     padding: 10px 30px 35px 93px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(6, 24px) auto;
+    grid-gap: 20px;
+    grid-template-areas:
+    "fullname fullname"
+    "education education"
+    "speciality speciality"
+    "degree course"
+    "phone email"
+    "telegram vk"
+    "about-me about-me"
+}
+
+.div-fullname {
+    grid-area: fullname;
+}
+
+.div-education {
+    grid-area: education;
+}
+
+.div-speciality {
+    grid-area: speciality;
+}
+
+.div-degree {
+    grid-area: degree;
+}
+
+.div-course {
+    grid-area: course;
+}
+
+.div-phone {
+    grid-area: phone;
+}
+
+.div-email {
+    grid-area: email;
+}
+
+.div-telegram {
+    grid-area: telegram;
+}
+
+.div-vk {
+    grid-area: vk;
+}
+
+.div-about-me {
+    grid-area: about-me;
 }
 
 .about-me {
     margin-top: 20px !important;
     display: block !important;
     width: 480px;
-    height: 200px;
+    height: 300px;
     flex-shrink: 0;
     border-radius: 20px;
     border: 3px solid #C9C9C9;
