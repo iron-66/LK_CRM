@@ -23,6 +23,7 @@ class CardInfo extends Component{
     constructor(props){
         super(props)
     }
+    
     render(){
         return <div className="card-container">
             <div className="card-field">
@@ -34,7 +35,7 @@ class CardInfo extends Component{
                     {Object.keys(form).map(key => (
                         <div className={"div-"+key}>
                             <p>{form[key]}</p>
-                            <p className="info" id={key}>Заглушка</p>
+                            <p className="info" id={key}>ЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушка</p>
                         </div>
                     ))}
                     <div className="flex-box div-about-me">

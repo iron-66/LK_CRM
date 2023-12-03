@@ -8,8 +8,8 @@ function App() {
   return (
     <div className='main-container'>
       <Header/>
-      <MainPage></MainPage>
-      {/* <CardInfo></CardInfo> */}
+      {/* <MainPage></MainPage> */}
+      <CardInfo></CardInfo>
     </div>
   );
 }
