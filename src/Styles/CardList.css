@@ -41,9 +41,9 @@
     gap: 20px;
 }
 
-.color-slider {
+.hue-picker {
     margin-top: 10px;
-    width: 180px;
+    width: 180px !important;
 }
 
 .people-card {

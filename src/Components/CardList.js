@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import { SliderPicker } from 'react-color';
 
 import Card from './Card'
 import '../Styles/CardList.css'
+import ColorPicker from "./ColorPicker";
 
 const people = ['Соловьёв П. Д.', 'Аляскина Ф. Р.', 'Кукушкин П. Н.', 'Кефирова Р. О.', 'Рыбова В. Ф.', 'Филиппов В. Ф.', 'Аляскина Ф. Р.']
 
@@ -11,12 +11,19 @@ const people = ['Соловьёв П. Д.', 'Аляскина Ф. Р.', 'Кук�
 class Column extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            backgroundColor: '#dddddd'
+        }
     }
+
+    ColorChange = (colorData) => {
+        this.setState((state) => {
+            return {backgroundColor: colorData}
+        })
+    } 
     render(){
-        return <li style={{backgroundColor: this.color}} className="column-element">
-            <SliderPicker className="color-slider hidden" 
-                color={this.color}
-                /> 
+        return <li style={{backgroundColor: this.state.backgroundColor}} className="column-element">
+            <ColorPicker onChangeColor={this.ColorChange} isVisible={this.props.isVisible}/> 
             <div className="name-column"><h2>{this.props.name}</h2></div>
             <ul className="cards-list">
             {
