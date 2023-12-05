@@ -12,7 +12,7 @@ class Column extends Component{
     constructor(props){
         super(props)
         this.state = {
-            backgroundColor: '#dddddd'
+            backgroundColor: localStorage.getItem(this.props.cardListId) ? localStorage.getItem(this.props.cardListId) : "#dddddd"
         }
     }
 
@@ -23,9 +23,9 @@ class Column extends Component{
     } 
     render(){
         return <li style={{backgroundColor: this.state.backgroundColor}} className="column-element">
-            <ColorPicker onChangeColor={this.ColorChange} isVisible={this.props.isVisible}/> 
+            <ColorPicker onChangeColor={this.ColorChange} isVisible={this.props.isVisible} colorKey={this.props.cardListId}/> 
             <div className="name-column"><h2>{this.props.name}</h2></div>
-            <ul className="cards-list">
+            <ul className="cards-list" id={this.props.cardListId}>
             {
                     people.map(human => (
                         <Card name={human}></Card>

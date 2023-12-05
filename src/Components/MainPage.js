@@ -4,13 +4,15 @@ import '../Styles/MainPage.css'
 import SettingsIcon from "../Files/SettingsIcon.svg"
 import CardList from './CardList'
 
-const statues = ['Отправил(а) персональные данные', 
-    'Не прошёл(ла) тестирование', 
-    'Прошёл(ла) тестирование', 
-    'Добавлен(а) в организационный чат', 
-    'Приступил(а) к практике', 
-    'Завершил(а) прохождение практики',
-    'Удалён(а) с практики']
+const statues = {
+    "send_data": 'Отправил(а) персональные данные',
+    "undone_test": 'Не прошёл(ла) тестирование',
+    "done_test": 'Прошёл(ла) тестирование',
+    "add_chat": 'Добавлен(а) в организационный чат',
+    "start_practice": 'Приступил(а) к практике',
+    "finish_practice": 'Завершил(а) прохождение практики',
+    "delete_practice":'Удалён(а) с практики',
+}
 
 class MainPage extends Component{
     constructor(props){
@@ -38,8 +40,8 @@ class MainPage extends Component{
                     <button className="forms-button">К формам и тестам</button>
                 </div>
                 <ul className="status-columns">
-                    {statues.map(status => (
-                        <CardList name={status} isVisible={this.state.isVisible}></CardList>
+                    {Object.keys(statues).map(key => (
+                        <CardList name={statues[key]} isVisible={this.state.isVisible} cardListId={key}></CardList>
                     ))}
                 </ul>
         </div>
