@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import { HuePicker } from "react-color";
+import { GithubPicker } from "react-color";
 
 export default function ColorPicker (props) {
     const [color, setColor] = useState('#dddddd');
     return <div className="color-picker">
-        <HuePicker 
+        <GithubPicker
+            triangle="hide"
             className={!props.isVisible ? "hidden" : ""}
             color={color}
             onChange={ (color) => {
