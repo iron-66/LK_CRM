@@ -16,12 +16,6 @@ class Column extends Component{
         }
     }
 
-    async componentDidMount(){
-        this.setState({ 
-            studentsArr: await this.props.students
-        })
-    }
-
     componentDidUpdate(){
         this.state.studentsArr = this.props.students
     }
