@@ -1,11 +1,12 @@
 import React, {Component} from "react";
+import axios from "axios";
 import '../Styles/MainPage.css'
 
 import SettingsIcon from "../Files/SettingsIcon.svg"
 import CardList from './CardList'
 
 const statues = {
-    "send_data": 'Отправил(а) персональные данные',
+    "new": 'Отправил(а) персональные данные',
     "undone_test": 'Не прошёл(ла) тестирование',
     "done_test": 'Прошёл(ла) тестирование',
     "add_chat": 'Добавлен(а) в организационный чат',
@@ -18,7 +19,8 @@ class MainPage extends Component{
     constructor(props){
         super(props)
         this.state = {
-            isVisible: false
+            isVisible: false,
+            studentsData: []
         }
     }
 
@@ -27,6 +29,18 @@ class MainPage extends Component{
             return {isVisible: !state.isVisible}
         })
     }
+
+    // https://fakestoreapi.com/products
+    // http://158.160.137.207:8000/get-students/?format=json
+
+    async componentDidMount(){
+        await axios("http://158.160.137.207:8000/get-students/?format=json")
+        .then(response => {this.setState({
+            studentsData: response.data
+        })})
+    }
+
+    
 
     render() {
         return <div>
@@ -41,7 +55,12 @@ class MainPage extends Component{
                 </div>
                 <ul className="status-columns">
                     {Object.keys(statues).map(key => (
-                        <CardList name={statues[key]} isVisible={this.state.isVisible} cardListId={key}></CardList>
+                        <CardList 
+                        name={statues[key]} 
+                        isVisible={this.state.isVisible} 
+                        cardListId={key}
+                        students={this.state.studentsData.filter(stud => stud.status == key)}
+                        />
                     ))}
                 </ul>
         </div>
