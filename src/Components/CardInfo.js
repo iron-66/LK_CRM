@@ -54,7 +54,7 @@ class CardInfo extends Component{
                     {Object.keys(form).map(key => (
                         <div className={"div-"+key}>
                             <p>{form[key]}</p>
-                            <p className="info" id={key}></p>
+                            <p className="info" id={key}>{this.state.studInfo[key]}</p>
                         </div>
                     ))}
                     <div className="flex-box div-about-me">
