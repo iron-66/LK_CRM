@@ -1,14 +1,16 @@
 import React, {Component} from "react";
+import { useParams } from "react-router-dom";
 
 import '../Styles/CardInfo.css'
 import backArrowIcon from '../Files/BackArrowIcon.svg'
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 // По факту этот объект это все айдишники полей, куда надо вписывать поля. [id объекта]: [Название поля]
 const form = {
-    "fullname": "ФИО:",
-    "education": "Учебное заведение:",
+    "full_name": "ФИО:",
+    "university": "Учебное заведение:",
     "speciality": "Специальность/направление:",
     "degree": "Академическая степень:",
     "course": "Курс:",
@@ -20,9 +22,25 @@ const form = {
 
 }
 
+function withParams(Component){
+    return props => <Component {...props} params={useParams()} />;
+}
+
 class CardInfo extends Component{
     constructor(props){
         super(props)
+        this.state = {
+            studInfo: {}
+        }
+    }
+
+    async componentDidMount(){
+        const id = this.props.params.studentId.slice(1)
+        await axios(`http://158.160.137.207:8000/get-info/${id}/`)
+        .then(response => {this.setState({
+                studInfo: response.data
+            })
+        })
     }
     
     render(){
@@ -36,7 +54,7 @@ class CardInfo extends Component{
                     {Object.keys(form).map(key => (
                         <div className={"div-"+key}>
                             <p>{form[key]}</p>
-                            <p className="info" id={key}>ЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушкаЗаглушка</p>
+                            <p className="info" id={key}></p>
                         </div>
                     ))}
                     <div className="flex-box div-about-me">
@@ -61,4 +79,4 @@ class CardInfo extends Component{
     }
 }
 
-export default CardInfo
+export default withParams(CardInfo)
