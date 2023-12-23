@@ -29,7 +29,7 @@ class CardInfo extends Component{
         return <div className="card-container">
             <div className="card-field">
                 <section className="card-header">
-                    <img className="card-backicon" src={backArrowIcon}></img>
+                    <Link to='/'><img className="card-backicon" src={backArrowIcon}/></Link>
                     <h2 className="card-title">Информация о практиканте</h2>
                 </section>
                 <section className="card-information">

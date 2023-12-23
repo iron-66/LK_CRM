@@ -12,11 +12,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<MainPage/>}/>
-          <Route path='/student' element={<CardInfo/>}/>
+          <Route path='/student/:studentId' element={<CardInfo/>}/>
         </Routes>
       </BrowserRouter>
-      <MainPage></MainPage>
-      <CardInfo></CardInfo>
     </div>
   );
 }
