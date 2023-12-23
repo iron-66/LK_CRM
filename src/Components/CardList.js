@@ -4,15 +4,12 @@ import Card from './Card'
 import '../Styles/CardList.css'
 import ColorPicker from "./ColorPicker";
 
-const people = ['Соловьёв П. Д.', 'Аляскина Ф. Р.', 'Кукушкин П. Н.', 'Кефирова Р. О.', 'Рыбова В. Ф.', 'Филиппов В. Ф.', 'Аляскина Ф. Р.']
-
 class Column extends Component{
     constructor(props){
         super(props)
         this.state = {
             backgroundColor: localStorage.getItem(this.props.cardListId) ? localStorage.getItem(this.props.cardListId) : "#dddddd",
-            studentsArr: [],
-            isUpdate: false,
+            studentsArr: []
         }
     }
 

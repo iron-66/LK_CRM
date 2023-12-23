@@ -2,6 +2,7 @@ import React, {Component} from "react";
 
 import '../Styles/CardInfo.css'
 import backArrowIcon from '../Files/BackArrowIcon.svg'
+import { Link } from "react-router-dom";
 
 
 // По факту этот объект это все айдишники полей, куда надо вписывать поля. [id объекта]: [Название поля]
