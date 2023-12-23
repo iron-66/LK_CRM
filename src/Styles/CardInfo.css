@@ -79,11 +79,11 @@
     "about-me about-me"
 }
 
-.div-fullname {
+.div-full_name {
     grid-area: fullname;
 }
 
-.div-education {
+.div-university {
     grid-area: education;
 }
 
