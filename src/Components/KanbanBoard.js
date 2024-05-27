@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
-import '../Styles/MainPage.css'
+import '../Styles/KanbanBoard.css'
 
 import SettingsIcon from "../Files/SettingsIcon.svg"
 import CardList from './CardList'
@@ -15,7 +15,7 @@ const statues = {
     "delete_practice":'Удалён(а) с практики',
 }
 
-class MainPage extends Component{
+class KanbanBoard extends Component{
     constructor(props){
         super(props)
         this.state = {
@@ -32,6 +32,7 @@ class MainPage extends Component{
 
     // https://fakestoreapi.com/products
     // http://158.160.137.207:8000/get-students/?format=json
+    // Что-то сделал
 
     async componentDidMount(){
         await axios("http://crm.studprzi.beget.tech/get-students/")
@@ -68,4 +69,4 @@ class MainPage extends Component{
     }
 }
 
-export default MainPage
+export default KanbanBoard

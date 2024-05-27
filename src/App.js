@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import Header from './Components/Header'
-import MainPage from './Components/MainPage'
+import KanbanBoard from './Components/KanbanBoard'
 import CardInfo from './Components/CardInfo';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <Header/>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<MainPage/>}/>
+          <Route path='/' element={<KanbanBoard/>}/>
           <Route path='/student/:studentId' element={<CardInfo/>}/>
         </Routes>
       </BrowserRouter>
