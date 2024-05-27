@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import '../Styles/KanbanBoard.css'
 
-import SettingsIcon from "../Files/SettingsIcon.svg"
+import SettingsIcon from "../Files/SettingsIcon.svg" //jopa
 import CardList from './CardList'
 
 const statues = {
