@@ -30,7 +30,7 @@ class KanbanBoard extends Component{
         })
     }
 
-    // https://fakestoreapi.com/products
+    // https://fakestoreapi.com/products          Это для проверки, если бэк лежит
     // http://158.160.137.207:8000/get-students/?format=json
 
     async componentDidMount(){
