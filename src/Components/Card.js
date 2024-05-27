@@ -16,4 +16,6 @@ class Card extends Component{
     }
 }
 
+//Зырь Петя я пофиксил
+
 export default Card
