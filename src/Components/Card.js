@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 
+// Карточка практиканта для канбана
 class Card extends Component{
     constructor(props){
         super(props)

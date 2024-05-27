@@ -26,6 +26,7 @@ function withParams(Component){
     return props => <Component {...props} params={useParams()} />;
 }
 
+// Карточка студента
 class CardInfo extends Component{
     constructor(props){
         super(props)
