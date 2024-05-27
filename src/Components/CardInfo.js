@@ -6,7 +6,7 @@ import backArrowIcon from '../Files/BackArrowIcon.svg'
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
+// Это я писал?
 // По факту этот объект это все айдишники полей, куда надо вписывать поля. [id объекта]: [Название поля]
 const form = {
     "full_name": "ФИО:",
