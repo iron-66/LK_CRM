@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import axios from "axios";
 import '../Styles/KanbanBoard.css'
 
-import SettingsIcon from "../Files/SettingsIcon.svg" //jopa
+import SettingsIcon from "../Files/SettingsIcon.svg"
 import CardList from './CardList'
 
-const statues = {
+const statues = {                             //Статусы студентов
     "new": 'Отправил(а) персональные данные',
     "undone_test": 'Не прошёл(ла) тестирование',
     "done_test": 'Прошёл(ла) тестирование',
