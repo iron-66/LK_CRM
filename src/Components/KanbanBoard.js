@@ -32,7 +32,6 @@ class KanbanBoard extends Component{
 
     // https://fakestoreapi.com/products
     // http://158.160.137.207:8000/get-students/?format=json
-    // Что-то сделал
 
     async componentDidMount(){
         await axios("http://crm.studprzi.beget.tech/get-students/")
@@ -40,8 +39,6 @@ class KanbanBoard extends Component{
             studentsData: response.data
         })})
     }
-
-    
 
     render() {
         return <div>
