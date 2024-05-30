@@ -7,6 +7,16 @@ import TableRow from "./TableRow";
 export default class TableBoard extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            studentsData: []
+        }
+    }
+
+    async componentDidMount(){
+        await axios("http://crm.studprzi.beget.tech/get-students/")
+        .then(response => {this.setState({
+            studentsData: response.data
+        })})
     }
 
     render() {
@@ -30,14 +40,11 @@ export default class TableBoard extends Component {
                 <h2>Результаты тестов</h2>
             </div>
             <ul className="table-list">
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
+            {       
+                    this.state.studentsData.map(human => (
+                        <TableRow student={human}></TableRow>
+                    ))
+                }
             </ul>
         </div>
     }
