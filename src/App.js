@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Header from './Components/Header'
 import KanbanBoard from './Components/KanbanBoard'
 import CardInfo from './Components/CardInfo';
+import TableBoard from './Components/TableBoard';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Header/>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<KanbanBoard/>}/>
+          {/* <Route path='/' element={<KanbanBoard/>}/> */}
+          <Route path='/' element={<TableBoard/>}/>
           <Route path='/student/:studentId' element={<CardInfo/>}/>
         </Routes>
       </BrowserRouter>
