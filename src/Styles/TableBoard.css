@@ -56,3 +56,36 @@ button {
     border-left: none;
     border-right: none;
 }
+
+.th-fio {
+    margin-left: 20px;
+    width: 280px;
+}
+
+.th-status {
+    margin-left: 25px;
+    width: 300px;
+}
+
+.th-phone-number {
+    margin-left: 20px;
+    width: 160px;
+}
+
+.th-vk-link {
+    margin-left: 60px;
+    width: 100px;
+}
+
+.th-email {
+    margin-left: 60px;
+    width: 90px;
+}
+
+.th-uni {
+    margin-left: 30px;
+}
+
+.th-course {
+    margin-left: 20px;
+}

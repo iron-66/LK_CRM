@@ -28,16 +28,16 @@ export default class TableBoard extends Component {
                 <button className="to-kanban-button">Канбан</button>
             </div>
             <div className="table-header">
-                <h2 style={{width: "310px", marginLeft: "20px"}}>Фамилия, имя, отчество</h2>
-                <h2 style={{width: "160px", marginLeft: "70px"}}>Статус</h2>
-                <h2 style={{width: "180px", marginLeft: "60px"}}>Номер телефона</h2>
-                <h2 style={{width: "120px", marginLeft: "50px"}}>Ссылка на вк</h2>
-                <h2 style={{width: "95px", marginLeft: "50px", marginRight: "10px"}}>Почта</h2>
-                <h2>Учебное заведение</h2>
-                <h2>Направление</h2>
-                <h2 style={{marginLeft: "20px"}}>Курс</h2>
-                <h2>Академ. степень</h2>
-                <h2>Результаты тестов</h2>
+                <h2 className="th-fio">Фамилия, имя, отчество</h2>
+                <h2 className="th-status">Статус</h2>
+                <h2 className="th-phone-number">Номер телефона</h2>
+                <h2 className="th-vk-link">Ссылка на вк</h2>
+                <h2 className="th-email">Почта</h2>
+                <h2 className="th-uni">Учебное заведение</h2>
+                <h2 className="th-direction">Направление</h2>
+                <h2 className="th-course">Курс</h2>
+                <h2 className="th-degree">Академ. степень</h2>
+                <h2 className="th-results">Результаты тестов</h2>
             </div>
             <ul className="table-list">
             {       
