@@ -37,7 +37,7 @@ class CardInfo extends Component{
 
     async componentDidMount(){
         const id = this.props.params.studentId.slice(1)
-        await axios(`http://crm.studprzi.beget.tech/get-info/${id}/`)
+        await axios(`http://158.160.171.6:8000/get-info/${id}/`)
         .then(response => {this.setState({
                 studInfo: response.data
             })

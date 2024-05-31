@@ -12,7 +12,7 @@ export default class TableBoard extends Component {
     }
 
     async componentDidMount(){
-        await axios("http://crm.studprzi.beget.tech/get-students/")
+        await axios("http://158.160.171.6:8000/get-students/")
         .then(response => {this.setState({
             studentsData: response.data
         })})
@@ -20,7 +20,7 @@ export default class TableBoard extends Component {
 
     handleExport = async () => {
         try {
-            const response = await axios.get("http://localhost:8000/export-students-xlsx/", {
+            const response = await axios.get("http://158.160.171.6:8000/export-students-xlsx/", {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));

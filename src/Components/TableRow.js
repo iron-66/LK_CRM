@@ -31,7 +31,7 @@ export default class TableRow extends Component {
                         <td><h2 className="course">{this.props.student.course}</h2></td>
                         <td><h2 className="degree">{this.props.student.degree}</h2></td>
                         {/* <td><h2 className="results">{this.props.student.is_test_send}</h2></td> */}
-                        <td><h2 className="results">жопажопажопажопажопажопажопажопажопажопажопажопа</h2></td>
+                        <td><h2 className="results"></h2></td>
                     </tr>
                 </table>
         </div>

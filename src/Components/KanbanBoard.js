@@ -34,7 +34,7 @@ class KanbanBoard extends Component{
     // http://158.160.137.207:8000/get-students/?format=json
 
     async componentDidMount(){
-        await axios("http://crm.studprzi.beget.tech/get-students/")
+        await axios("http://158.160.171.6:8000/get-students/")
         .then(response => {this.setState({
             studentsData: response.data
         })})
