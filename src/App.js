@@ -13,7 +13,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* <Route path='/' element={<KanbanBoard/>}/> */}
-          <Route path='/' element={<TableBoard/>}/>
+          <Route path='/' element={<KanbanBoard/>}/>
+          <Route path='/table' element={<TableBoard/>}/>
           <Route path='/student/:studentId' element={<CardInfo/>}/>
         </Routes>
       </BrowserRouter>

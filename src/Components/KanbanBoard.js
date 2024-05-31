@@ -40,6 +40,10 @@ class KanbanBoard extends Component{
         })})
     }
 
+    handleTable = () => {
+        window.location.href = '/table';
+    }
+
     render() {
         return <div>
                 <div className="container">
@@ -49,7 +53,7 @@ class KanbanBoard extends Component{
                         onClick={this.ChangeVisibility}
                     />
                     <h2 className="header-name">Главная страница</h2>
-                    <button className="forms-button">К формам и тестам</button>
+                    <button className="forms-button" onClick={this.handleTable}>Табличный вид</button>
                 </div>
                 <ul className="status-columns">
                     {Object.keys(statues).map(key => (

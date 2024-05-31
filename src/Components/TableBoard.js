@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import '../Styles/TableBoard.css'
 import axios from "axios";
-
 import TableRow from "./TableRow";
 
 export default class TableBoard extends Component {
@@ -36,13 +35,17 @@ export default class TableBoard extends Component {
         }
     }
 
+    handleKanban = () => {
+        window.location.href = '/';
+    }
+
     render() {
         return <div>
             <div className="container">
                 <button className="sort-button">Отсортировать</button>
                 <input type="search" placeholder="Поиск по странице" className="search-input"></input>
                 <button className="export-button" onClick={this.handleExport}>Экспортировать</button>
-                <button className="to-kanban-button">Канбан</button>
+                <button className="to-kanban-button" onClick={this.handleKanban}>Канбан</button>
             </div>
             <div className="table-header">
                 <h2 className="th-fio">Фамилия, имя, отчество</h2>
