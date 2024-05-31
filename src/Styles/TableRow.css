@@ -1,7 +1,8 @@
 .row {
     display: flex;
+    align-items: center;
     width: 1870px;
-    height: 90px;
+    height: 100px;
     border: 3px solid black;
     border-radius: 30px;
     margin-left: auto;
@@ -9,21 +10,74 @@
     margin-top: 16px;
 }
 
-/* .row :hover{
-    background-color: #dedede;
-} */
-
 .row h2 {
-    padding: 0;
-    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-bottom: 0;
     font-size: 22px;
     text-align: center;
 }
 
-.fio, .status {
+.row td {
+    height: 80px;
+}
+
+.fio {
+    margin-left: 10px;
     width: 260px;
 }
 
+.status {
+    margin-left: 55px;
+    width: 230px;
+}
+
+.phone-number {
+    margin-left: 10px;
+    width: 180px;
+}
+
+.vk-link,
+.email,
+.uni,
+.direction,
+.course,
+.degree,
+.results {
+    padding-top: 15px;
+    overflow-x: scroll;
+}
+
+.vk-link {
+    margin-left: 35px;
+    width: 120px;
+}
+
+.email {
+    margin-left: 35px;
+    width: 110px;
+}
+
+.uni {
+    margin-left: 43px;
+    width: 110px;
+}
+
 .direction {
-    width: 160px
+    margin-left: 40px;
+    width: 170px;
+}
+
+.course {
+    margin-left: 5px;
+    width: 70px;
+}
+
+.degree {
+    width: 170px;
+}
+
+.results {
+    margin-left: 10px;
+    width: 150px;
 }
