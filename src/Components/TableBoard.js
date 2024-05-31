@@ -19,12 +19,29 @@ export default class TableBoard extends Component {
         })})
     }
 
+    handleExport = async () => {
+        try {
+            const response = await axios.get("http://localhost:8000/export-students-xlsx/", {
+                responseType: 'blob',
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'students.xlsx');
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+        } catch (error) {
+            console.error("Error during exporting XLSX file", error);
+        }
+    }
+
     render() {
         return <div>
             <div className="container">
                 <button className="sort-button">Отсортировать</button>
                 <input type="search" placeholder="Поиск по странице" className="search-input"></input>
-                <button className="export-button">Экспортировать</button>
+                <button className="export-button" onClick={this.handleExport}>Экспортировать</button>
                 <button className="to-kanban-button">Канбан</button>
             </div>
             <div className="table-header">
