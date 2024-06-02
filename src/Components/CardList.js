@@ -30,7 +30,7 @@ class Column extends Component{
             <ul className="cards-list" id={this.props.cardListId}>
             {       
                     this.state.studentsArr.map(human => (
-                        <Card name={human.full_name} studentId={human.id}></Card>
+                        <Card key={human.id} name={human.full_name} studentId={human.id}></Card>
                     ))
                 }
             </ul>

@@ -22,8 +22,10 @@ class KanbanBoard extends Component{
             isVisible: false,
             studentsData: [],
             filteredStudentsData: [],
-            searchingValue: ''
+            searchingValue: '',
+            update: false
         }
+        
     }
 
     ChangeVisibility = () => {
@@ -38,8 +40,19 @@ class KanbanBoard extends Component{
     async componentDidMount(){
         await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
         .then(response => {this.setState({
-            studentsData: response.data
+            studentsData: response.data,
+            filteredStudentsData: response.data
         })})
+        // console.log("mount")
+    }
+
+    async componentDidUpdate(){
+        // console.log("update")
+        if (this.state.update) {
+            this.setState({
+                update: false
+            })
+        }
     }
 
     handleTable = () => {
@@ -49,8 +62,10 @@ class KanbanBoard extends Component{
     searchingOnPage = (e) => {
         this.state.searchingValue = e.target.value.toLowerCase().trim();
         if (this.state.searchingValue !== '' || this.state.searchingValue !== ' ') {
-            this.state.filteredStudentsData = this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(this.state.searchingValue));
-            console.log(this.state.filteredStudentsData);
+            this.setState({
+                filteredStudentsData: this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(this.state.searchingValue))
+            })
+            this.state.update = true
         }
     }
 
@@ -68,11 +83,11 @@ class KanbanBoard extends Component{
                 </div>
                 <ul className="status-columns">
                     {Object.keys(statues).map(key => (
-                        <CardList 
+                        <CardList key={key}
                         name={statues[key]} 
                         isVisible={this.state.isVisible} 
                         cardListId={key}
-                        students={this.state.studentsData.filter(stud => stud.status === key)}
+                        students={this.state.filteredStudentsData.filter(stud => stud.status === key)}
                         />
                     ))}
                 </ul>
