@@ -28,7 +28,7 @@ export default class TableBoard extends Component {
 
 
     async componentDidMount(){
-        await axios("http://158.160.131.224:8000/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.131.224:8000/get-students/
+        await axios("http://crm.studprzi.beget.tech/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.131.224:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
@@ -109,25 +109,36 @@ export default class TableBoard extends Component {
                 <button className="export-button" onClick={this.handleExport}>Экспортировать</button>
                 <button className="to-kanban-button" onClick={this.handleKanban}>Канбан</button>
             </div>
-            <div className="table-header">
-                <h2 className="th-fio">Фамилия, имя, отчество</h2>
-                <h2 className="th-status">Статус</h2>
-                <h2 className="th-phone-number">Номер телефона</h2>
-                <h2 className="th-vk-link">Ссылка на вк</h2>
-                <h2 className="th-email">Почта</h2>
-                <h2 className="th-uni">Учебное заведение</h2>
-                <h2 className="th-direction">Направление</h2>
-                <h2 className="th-course">Курс</h2>
-                <h2 className="th-degree">Академ. степень</h2>
-                <h2 className="th-results">Результаты тестов</h2>
-            </div>
-            <ul className="table-list">
+            <table>
+                <thead>
+                    <tr className="table-header">
+                        <th className="th-fio">Фамилия, имя, отчество</th>
+                        <th className="th-status">Статус</th>
+                        <th className="th-phone-number">Номер телефона</th>
+                        <th className="th-vk-link">Ссылка на вк</th>
+                        <th className="th-email">Почта</th>
+                        <th className="th-uni">Учебное заведение</th>
+                        <th className="th-direction">Направление</th>
+                        <th className="th-course">Курс</th>
+                        <th className="th-degree">Академ. степень</th>
+                        <th className="th-results">Результаты тестов</th>
+                    </tr>
+                </thead>
+                <tbody className="table-list">
+                    {       
+                        this.state.filteredStudentsData.map(human => (
+                            <TableRow student={human}></TableRow>
+                        ))
+                    }
+                </tbody>
+            </table>
+            {/* <ul className="table-list">
             {       
                     this.state.filteredStudentsData.map(human => (
                         <TableRow student={human}></TableRow>
                     ))
                 }
-            </ul>
+            </ul> */}
         </div>
     }
 }
