@@ -18,10 +18,15 @@ button {
     margin-top: 5px;
     margin-left: 149px;
     margin-right: 114px;
+    font-size: 22px;
+    background-color: #F6F6F6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .to-kanban-button {
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 .table-header {
@@ -47,14 +52,6 @@ button {
 .table-header h2 {
     font-size: 22px;
     text-align: center;
-}
-
-.search-input {
-    font-size: 22px;
-    background-color: #F6F6F6;
-    border-top: none;
-    border-left: none;
-    border-right: none;
 }
 
 .th-fio {

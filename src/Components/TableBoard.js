@@ -12,7 +12,7 @@ export default class TableBoard extends Component {
     }
 
     async componentDidMount(){
-        await axios("http://158.160.171.6:8000/get-students/")
+        await axios("http://crm.studprzi.beget.tech/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data
         })})

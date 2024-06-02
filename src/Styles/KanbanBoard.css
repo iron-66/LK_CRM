@@ -1,20 +1,20 @@
-.container {
-    margin-top: 18px;
-    padding-left: 67px;
+button {
+    width: 285px;
+    height: 52px;
+}
+
+.kanban-header-container {
     display: flex;
     align-items: center;
     align-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;   
 }
 
 .header-name {
     margin-left: 702px;
     margin-right: 252px;
     
-}
-
-.forms-button {
-    width: 404px;
-    height: 80px;
 }
 
 .status-columns {
@@ -25,6 +25,27 @@
     gap: 5px;
 }
 
+.settings-icon {
+    margin-left: 67px;
+}
+
 .settings-icon:hover {
     filter: opacity(0.6);
+}
+
+.kanban-search-input {
+    width: 718px;
+    height: 42px;
+    margin-top: 5px;
+    margin-left: 332px;
+    margin-right: 114px;
+    font-size: 22px;
+    background-color: #F6F6F6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.forms-button {
+    margin-left: 25px;
 }

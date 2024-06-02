@@ -34,7 +34,7 @@ class KanbanBoard extends Component{
     // http://158.160.137.207:8000/get-students/?format=json
 
     async componentDidMount(){
-        await axios("http://158.160.171.6:8000/get-students/")
+        await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data
         })})
@@ -46,13 +46,14 @@ class KanbanBoard extends Component{
 
     render() {
         return <div>
-                <div className="container">
+                <div className="kanban-header-container">
                     <img 
                         className="settings-icon" 
                         src={SettingsIcon} 
                         onClick={this.ChangeVisibility}
                     />
-                    <h2 className="header-name">Главная страница</h2>
+                    <input type="search" placeholder="Поиск по странице" className="kanban-search-input"></input>
+                    <button className="exp-button">Экспортировать</button>
                     <button className="forms-button" onClick={this.handleTable}>Табличный вид</button>
                 </div>
                 <ul className="status-columns">
