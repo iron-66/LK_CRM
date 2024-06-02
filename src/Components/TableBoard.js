@@ -35,15 +35,15 @@ export default class TableBoard extends Component {
         })})
     }
 
-    async componentDidUpdate(){
-        // console.log("update")
-        if (this.state.IsUpdate){
-            console.log("updateUpdate")
-            this.setState({
-                IsUpdate: !this.state.IsUpdate
-            })
-        }
-    }
+    // async componentDidUpdate(){
+    //     // console.log("update")
+    //     if (this.state.IsUpdate){
+    //         console.log("updateUpdate")
+    //         this.setState({
+    //             IsUpdate: !this.state.IsUpdate
+    //         })
+    //     }
+    // }
 
     handleExport = async () => {
         try {
@@ -85,7 +85,7 @@ export default class TableBoard extends Component {
                 filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.course === this.state.filterCourse && s.full_name.toLowerCase().includes(this.state.filterFIO))
             })
         }
-        this.state.IsUpdate = true
+        // this.state.IsUpdate = true
         // console.log(this.state.filteredStudentsData)
     }
 
