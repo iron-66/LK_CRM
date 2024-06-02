@@ -33,7 +33,7 @@ button {
     filter: opacity(0.6);
 }
 
-.kanban-search-input {
+#kanban-search-input {
     width: 718px;
     height: 42px;
     margin-top: 5px;

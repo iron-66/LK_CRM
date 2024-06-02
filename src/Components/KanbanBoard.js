@@ -20,7 +20,9 @@ class KanbanBoard extends Component{
         super(props)
         this.state = {
             isVisible: false,
-            studentsData: []
+            studentsData: [],
+            filteredStudentsData: [],
+            searchingValue: ''
         }
     }
 
@@ -44,6 +46,14 @@ class KanbanBoard extends Component{
         window.location.href = '/table';
     }
 
+    searchingOnPage = (e) => {
+        this.state.searchingValue = e.target.value.toLowerCase().trim();
+        if (this.state.searchingValue !== '' || this.state.searchingValue !== ' ') {
+            this.state.filteredStudentsData = this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(this.state.searchingValue));
+            console.log(this.state.filteredStudentsData);
+        }
+    }
+
     render() {
         return <div>
                 <div className="kanban-header-container">
@@ -52,7 +62,7 @@ class KanbanBoard extends Component{
                         src={SettingsIcon} 
                         onClick={this.ChangeVisibility}
                     />
-                    <input type="search" placeholder="Поиск по странице" className="kanban-search-input"></input>
+                    <input type="text" placeholder="Поиск по странице" onChange={this.searchingOnPage} id="kanban-search-input"></input>
                     <button className="exp-button">Экспортировать</button>
                     <button className="forms-button" onClick={this.handleTable}>Табличный вид</button>
                 </div>
@@ -62,7 +72,7 @@ class KanbanBoard extends Component{
                         name={statues[key]} 
                         isVisible={this.state.isVisible} 
                         cardListId={key}
-                        students={this.state.studentsData.filter(stud => stud.status == key)}
+                        students={this.state.studentsData.filter(stud => stud.status === key)}
                         />
                     ))}
                 </ul>
