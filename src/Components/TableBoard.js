@@ -3,6 +3,16 @@ import '../Styles/TableBoard.css'
 import axios from "axios";
 import TableRow from "./TableRow";
 
+const statues = {                             //Статусы студентов
+    "new": 'Отправил(а) персональные данные',
+    "undone_test": 'Не прошёл(ла) тестирование',
+    "done_test": 'Прошёл(ла) тестирование',
+    "add_chat": 'Добавлен(а) в организационный чат',
+    "start_practice": 'Приступил(а) к практике',
+    "finish_practice": 'Завершил(а) прохождение практики',
+    "delete_practice":'Удалён(а) с практики',
+}
+
 export default class TableBoard extends Component {
     constructor(props) {
         super(props)
@@ -42,7 +52,18 @@ export default class TableBoard extends Component {
     render() {
         return <div>
             <div className="container">
-                <button className="sort-button">Отсортировать</button>
+                <select className="filter-by-status">
+                    <option selected="selected">По статусу</option>
+                    {Object.keys(statues).map(key => (
+                        <option value={key}>{statues[key]}</option>
+                    ))}
+                </select>
+                <select className="filter-by-course">
+                    <option selected="selected">По курсу</option>
+                    {[1, 2, 3, 4, 5, 6].map(i => (
+                        <option value={i}>{i}</option>
+                    ))}
+                </select>
                 <input type="search" placeholder="Поиск по странице" className="search-input"></input>
                 <button className="export-button" onClick={this.handleExport}>Экспортировать</button>
                 <button className="to-kanban-button" onClick={this.handleKanban}>Канбан</button>
