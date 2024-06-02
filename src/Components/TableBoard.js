@@ -18,16 +18,30 @@ export default class TableBoard extends Component {
         super(props)
         this.state = {
             studentsData: [],
-            filteredStudentsData: []
+            filteredStudentsData: [],
+            filterStatus: "default",
+            filterCourse: "default",
+            IsUpdate: false,
         }
     }
 
+
     async componentDidMount(){
-        await axios("http://crm.studprzi.beget.tech/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
+        await axios("http://158.160.131.224:8000/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.131.224:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
         })})
+    }
+
+    async componentDidUpdate(){
+        console.log("update")
+        if (this.state.IsUpdate){
+            console.log("updateUpdate")
+            this.setState({
+                IsUpdate: !this.state.IsUpdate
+            })
+        }
     }
 
     handleExport = async () => {
@@ -51,42 +65,39 @@ export default class TableBoard extends Component {
         window.location.href = '/';
     }
 
-    filterByStatus = (e) => {
-        if (e.target.value !== "default") {
+    filter= () => {
+        console.log(this.state.filterCourse, this.state.filterStatus)
+        if (this.state.filterStatus == "default" && this.state.filterCourse == "default") {
             this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.status === e.target.value)
+                filteredStudentsData: this.state.studentsData
+            })  
+        } else if (this.state.filterStatus == "default") {
+            this.setState({
+                filteredStudentsData: this.state.studentsData.filter(s => s.course === this.state.filterCourse)
+            })
+        } else if (this.state.filterCourse == "default"){
+            this.setState({
+                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus)
             })
         } else {
             this.setState({
-                filteredStudentsData: this.state.studentsData
+                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.course === this.state.filterCourse)
             })
         }
-        console.log(this.state.filteredStudentsData)
-    }
-
-    filterByCourse = (e) => {
-        if (e.target.value !== "default") {
-            this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.course === e.target.value)
-            })
-        } else {
-            this.setState({
-                filteredStudentsData: this.state.studentsData
-            })
-        }
+        this.state.IsUpdate = true
         console.log(this.state.filteredStudentsData)
     }
 
     render() {
         return <div>
             <div className="container">
-                <select className="filter-by-status" onChange={this.filterByStatus}>
+                <select className="filter-by-status" onChange={(e) => {this.state.filterStatus = e.target.value; this.filter()}}>
                     <option selected value={"default"}>По статусу</option>
                     {Object.keys(statues).map(key => (
                         <option value={key}>{statues[key]}</option>
                     ))}
                 </select>
-                <select className="filter-by-course" onChange={this.filterByCourse}>
+                <select className="filter-by-course" onChange={(e) => {this.state.filterCourse = e.target.value; this.filter()}}>
                     <option selected value={"default"}>По курсу</option>
                     {[1, 2, 3, 4, 5, 6].map(i => (
                         <option value={i}>{i}</option>
