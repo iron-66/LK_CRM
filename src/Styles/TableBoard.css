@@ -17,7 +17,7 @@ button {
     height: 42px;
     margin-top: 5px;
     margin-left: 149px;
-    margin-right: 114px;
+    margin-right: 100px;
     font-size: 22px;
     background-color: #F6F6F6;
     border-top: none;
@@ -25,8 +25,12 @@ button {
     border-right: none;
 }
 
+.sort-button {
+    margin-left: 20px;
+}
+
 .to-kanban-button {
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .table-header {
