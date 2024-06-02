@@ -17,14 +17,16 @@ export default class TableBoard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            studentsData: []
+            studentsData: [],
+            filteredStudentsData: []
         }
     }
 
     async componentDidMount(){
         await axios("http://crm.studprzi.beget.tech/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
         .then(response => {this.setState({
-            studentsData: response.data
+            studentsData: response.data,
+            filteredStudentsData: response.data
         })})
     }
 
@@ -49,17 +51,43 @@ export default class TableBoard extends Component {
         window.location.href = '/';
     }
 
+    filterByStatus = (e) => {
+        if (e.target.value !== "default") {
+            this.setState({
+                filteredStudentsData: this.state.studentsData.filter(s => s.status === e.target.value)
+            })
+        } else {
+            this.setState({
+                filteredStudentsData: this.state.studentsData
+            })
+        }
+        console.log(this.state.filteredStudentsData)
+    }
+
+    filterByCourse = (e) => {
+        if (e.target.value !== "default") {
+            this.setState({
+                filteredStudentsData: this.state.studentsData.filter(s => s.course === e.target.value)
+            })
+        } else {
+            this.setState({
+                filteredStudentsData: this.state.studentsData
+            })
+        }
+        console.log(this.state.filteredStudentsData)
+    }
+
     render() {
         return <div>
             <div className="container">
-                <select className="filter-by-status">
-                    <option selected="selected">По статусу</option>
+                <select className="filter-by-status" onChange={this.filterByStatus}>
+                    <option selected value={"default"}>По статусу</option>
                     {Object.keys(statues).map(key => (
                         <option value={key}>{statues[key]}</option>
                     ))}
                 </select>
-                <select className="filter-by-course">
-                    <option selected="selected">По курсу</option>
+                <select className="filter-by-course" onChange={this.filterByCourse}>
+                    <option selected value={"default"}>По курсу</option>
                     {[1, 2, 3, 4, 5, 6].map(i => (
                         <option value={i}>{i}</option>
                     ))}
@@ -82,7 +110,7 @@ export default class TableBoard extends Component {
             </div>
             <ul className="table-list">
             {       
-                    this.state.studentsData.map(human => (
+                    this.state.filteredStudentsData.map(human => (
                         <TableRow student={human}></TableRow>
                     ))
                 }
