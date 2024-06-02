@@ -22,7 +22,6 @@ class KanbanBoard extends Component{
             isVisible: false,
             studentsData: [],
             filteredStudentsData: [],
-            searchingValue: '',
             update: false
         }
         
@@ -34,20 +33,15 @@ class KanbanBoard extends Component{
         })
     }
 
-    // https://fakestoreapi.com/products          Это для проверки, если бэк лежит
-    // http://158.160.137.207:8000/get-students/?format=json
-
     async componentDidMount(){
         await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.171.6:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
         })})
-        // console.log("mount")
     }
 
     async componentDidUpdate(){
-        // console.log("update")
         if (this.state.update) {
             this.setState({
                 update: false
@@ -60,13 +54,12 @@ class KanbanBoard extends Component{
     }
 
     searchingOnPage = (e) => {
-        this.state.searchingValue = e.target.value.toLowerCase().trim();
-        if (this.state.searchingValue !== '' || this.state.searchingValue !== ' ') {
-            this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(this.state.searchingValue))
-            })
-            this.state.update = true
-        }
+        var searchingValue = e.target.value.toLowerCase().trim();
+        this.setState({
+            filteredStudentsData: this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(searchingValue))
+        })
+        this.state.update = true
+        
     }
 
     render() {
