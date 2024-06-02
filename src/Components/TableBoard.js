@@ -21,6 +21,7 @@ export default class TableBoard extends Component {
             filteredStudentsData: [],
             filterStatus: "default",
             filterCourse: "default",
+            filterFIO: "",
             IsUpdate: false,
         }
     }
@@ -35,7 +36,7 @@ export default class TableBoard extends Component {
     }
 
     async componentDidUpdate(){
-        console.log("update")
+        // console.log("update")
         if (this.state.IsUpdate){
             console.log("updateUpdate")
             this.setState({
@@ -65,27 +66,27 @@ export default class TableBoard extends Component {
         window.location.href = '/';
     }
 
-    filter= () => {
+    filter = () => {
         console.log(this.state.filterCourse, this.state.filterStatus)
         if (this.state.filterStatus == "default" && this.state.filterCourse == "default") {
             this.setState({
-                filteredStudentsData: this.state.studentsData
+                filteredStudentsData: this.state.studentsData.filter(s => s.full_name.toLowerCase().includes(this.state.filterFIO))
             })  
         } else if (this.state.filterStatus == "default") {
             this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.course === this.state.filterCourse)
+                filteredStudentsData: this.state.studentsData.filter(s => s.course === this.state.filterCourse && s.full_name.toLowerCase().includes(this.state.filterFIO))
             })
         } else if (this.state.filterCourse == "default"){
             this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus)
+                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.full_name.toLowerCase().includes(this.state.filterFIO))
             })
         } else {
             this.setState({
-                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.course === this.state.filterCourse)
+                filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.course === this.state.filterCourse && s.full_name.toLowerCase().includes(this.state.filterFIO))
             })
         }
         this.state.IsUpdate = true
-        console.log(this.state.filteredStudentsData)
+        // console.log(this.state.filteredStudentsData)
     }
 
     render() {
@@ -103,7 +104,8 @@ export default class TableBoard extends Component {
                         <option value={i}>{i}</option>
                     ))}
                 </select>
-                <input type="search" placeholder="Поиск по странице" className="search-input"></input>
+                <input type="search" placeholder="Поиск по ФИО" className="search-input" 
+                    onChange={(e) => {this.state.filterFIO = e.target.value.toLowerCase().trim(); this.filter()}}></input>
                 <button className="export-button" onClick={this.handleExport}>Экспортировать</button>
                 <button className="to-kanban-button" onClick={this.handleKanban}>Канбан</button>
             </div>
