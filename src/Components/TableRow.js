@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import '../Styles/TableRow.css'
 import {Link} from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const statues = {                             //Статусы студентов
     "new": 'Отправил(а) персональные данные',
@@ -18,7 +19,7 @@ export default class TableRow extends Component {
     }
 
     render() {
-        return <Link to={'/student/:'+ this.props.student.id}>
+        return <Link to={'/student/:'+ this.props.student.id} state={{page: "table"}}>
                     <tr className="row">
                         <td className="fio"><h2>{this.props.student.full_name}</h2></td>
                         <td className="status"><h2>{statues[this.props.student.status]}</h2></td>

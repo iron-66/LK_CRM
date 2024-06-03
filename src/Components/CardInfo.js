@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import '../Styles/CardInfo.css'
 import backArrowIcon from '../Files/BackArrowIcon.svg'
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 // Это я писал?
@@ -23,7 +24,7 @@ const form = {
 }
 
 function withParams(Component){
-    return props => <Component {...props} params={useParams()} />;
+    return props => <Component {...props} params={useParams()} location={useLocation()} />;
 }
 
 // Карточка студента
@@ -31,12 +32,16 @@ class CardInfo extends Component{
     constructor(props){
         super(props)
         this.state = {
-            studInfo: {}
+            studInfo: {},
+            page: ""
         }
     }
 
     async componentDidMount(){
         const id = this.props.params.studentId.slice(1)
+        this.setState({
+            page: this.props.location.state.page
+        })
         await axios(`http://crm.studprzi.beget.tech/get-info/${id}/`) // http://crm.studprzi.beget.tech/get-info/${id}/ http://158.160.171.6:8000/get-info/${id}/
         .then(response => {this.setState({
                 studInfo: response.data
@@ -48,7 +53,7 @@ class CardInfo extends Component{
         return <div className="card-container">
             <div className="card-field">
                 <section className="card-header">
-                    <Link to='/'><img className="card-backicon" src={backArrowIcon}/></Link>
+                    <Link to={'/'+ this.state.page}><img className="card-backicon" src={backArrowIcon}/></Link>
                     <h2 className="card-title">Информация о практиканте</h2>
                 </section>
                 <section className="card-information">

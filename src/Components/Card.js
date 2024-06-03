@@ -7,7 +7,7 @@ class Card extends Component{
         super(props)
     }
     render(){
-        return <Link to={'/student/:'+ this.props.studentId}>
+        return <Link to={'/student/:'+ this.props.studentId} state={{page: ""}}>
             <li className="people-card">
                 <div>
                     {this.props.name}
@@ -16,7 +16,5 @@ class Card extends Component{
         </Link>
     }
 }
-
-//Зырь Петя я пофиксил
 
 export default Card
