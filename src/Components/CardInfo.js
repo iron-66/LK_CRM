@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-// Это я писал?
 // По факту этот объект это все айдишники полей, куда надо вписывать поля. [id объекта]: [Название поля]
 const form = {
     "full_name": "ФИО:",
@@ -71,14 +70,15 @@ class CardInfo extends Component{
                     {Object.keys(form).map(key => (
                         <div className={"div-"+key}>
                             <p>{form[key]}</p>
-                            <p className="info" id={key}>{this.state.studInfo[key]}</p>
+                            <p className="info" id={key}>{key == "status" ? statues[this.state.studInfo[key]] : this.state.studInfo[key]}</p>
                         </div>
                     ))}
                     <div className="stud-test-results">
                         <select className="change-status-btn">
-                            <option selected value={"default"}>Сменить статус</option>
+                            {/* <option selected value={"default"}>Сменить статус</option> */}
                             {Object.keys(statues).map(key => (
-                                <option value={key}>{statues[key]}</option>
+                                this.state.studInfo.status == key ? <option selected value={key}>{statues[key]}</option> : <option value={key}>{statues[key]}</option>
+                                // <option value={key}>{statues[key]}</option>
                             ))}
                         </select>
                         <h2 className="text">Результаты тестирования практиканта</h2>
