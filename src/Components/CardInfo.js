@@ -52,11 +52,27 @@ class CardInfo extends Component{
         this.setState({
             page: this.props.location.state.page
         })
-        await axios(`http://crm.studprzi.beget.tech/get-info/${id}/`) // http://crm.studprzi.beget.tech/get-info/${id}/ http://158.160.171.6:8000/get-info/${id}/
+        await axios(`http://158.160.165.203:8000/get-info/${id}/`) // http://crm.studprzi.beget.tech/get-info/${id}/ http://158.160.171.6:8000/get-info/${id}/
         .then(response => {this.setState({
                 studInfo: response.data
             })
         })
+    }
+
+    // http://158.160.165.203:8000/update-status/
+    updateStatus = async (e) => {
+
+        console.log([this.state.studInfo.id, e.target.value].join("&"))
+        
+        await axios.patch(`http://158.160.165.203:8000/update-status/${[this.state.studInfo.id, e.target.value].join("&")}/`)
+        .then(response => {
+            console.log(response.data)
+        })
+        
+        await axios(`http://158.160.165.203:8000/get-info/${this.state.studInfo.id}/`)
+        .then(response => {this.setState({
+            studInfo: response.data
+        })})
     }
     
     render(){
@@ -74,7 +90,7 @@ class CardInfo extends Component{
                         </div>
                     ))}
                     <div className="stud-test-results">
-                        <select className="change-status-btn">
+                        <select className="change-status-btn" onChange={this.updateStatus}>
                             {/* <option selected value={"default"}>Сменить статус</option> */}
                             {Object.keys(statues).map(key => (
                                 this.state.studInfo.status == key ? <option selected value={key}>{statues[key]}</option> : <option value={key}>{statues[key]}</option>

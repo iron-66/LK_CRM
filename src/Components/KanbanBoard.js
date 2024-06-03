@@ -34,11 +34,12 @@ class KanbanBoard extends Component{
     }
 
     async componentDidMount(){
-        await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.131.224:8000/get-students/
+        await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.165.203:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
         })})
+        this.state.update = true
     }
 
     async componentDidUpdate(){
