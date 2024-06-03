@@ -19,8 +19,19 @@ const form = {
     "telegram": "Telegram тег:",
     "vk": "Vk id:",
     "email": "Email:",
+    "status": "Статус:"
     //test-result: Результаты тестирования
 
+}
+
+const statues = {                             //Статусы студентов
+    "new": 'Отправил(а) персональные данные',
+    "undone_test": 'Не прошёл(ла) тестирование',
+    "done_test": 'Прошёл(ла) тестирование',
+    "add_chat": 'Добавлен(а) в организационный чат',
+    "start_practice": 'Приступил(а) к практике',
+    "finish_practice": 'Завершил(а) прохождение практики',
+    "delete_practice":'Удалён(а) с практики',
 }
 
 function withParams(Component){
@@ -63,22 +74,21 @@ class CardInfo extends Component{
                             <p className="info" id={key}>{this.state.studInfo[key]}</p>
                         </div>
                     ))}
-                    <div className="flex-box div-about-me">
-                        <div>
-                            <p>О себе:</p>
-                            <p className="about-me"></p>
-                        </div>
-                        <div className="flex-box center vertical">
-                            <div className="flex-box vertical test-info">
-                                <p>Результаты тестирования практиканта</p>
-                                <p className="info" id="test-result">34/40</p>
-                            </div>
-                            <div className="flex-box">
-                                <button className="card-button">Отклонить</button>
-                                <button className="card-button">Принять</button>
-                            </div>
+                    <div className="stud-test-results">
+                        <select className="change-status-btn">
+                            <option selected value={"default"}>Сменить статус</option>
+                            {Object.keys(statues).map(key => (
+                                <option value={key}>{statues[key]}</option>
+                            ))}
+                        </select>
+                        <h2 className="text">Результаты тестирования практиканта</h2>
+                        <h2 className="info" id="test-result">34/40</h2>
+                        <div className="flex-box">
+                            <button className="deny-button">Отклонить</button>
+                            <button className="card-button">Принять</button>
                         </div>
                     </div>
+                    
                 </section>
             </div>
         </div>

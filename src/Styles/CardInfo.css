@@ -40,11 +40,12 @@
 }
 
 .card-field {
-    display: inline;
-    width: 1130px;
+    /* display: inline; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
     height: 730px;
-    padding: 35px;
-    flex-shrink: 0;
+    padding: 35px 0px 35px 0px;
     border-radius: 30px;
     border: 1px solid #C9C9C9;
     background: #fff;
@@ -53,6 +54,9 @@
 
 .card-header {
     display: flex;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card-backicon:hover{
@@ -60,14 +64,15 @@
 }
 
 .card-title {
-    margin: 10px 0 0 262px;
+    margin: 10px 0 0 170px;
+    width: 250px;
 }
 
 .card-information {
-    padding: 10px 30px 35px 93px;
+    padding: 50px 10px 0px 100px;
     display: grid;
     grid-template-columns: 50% 50%;
-    grid-template-rows: repeat(6, 24px) auto;
+    grid-template-rows: repeat(6, 34px) auto;
     grid-gap: 20px;
     grid-template-areas:
     "fullname fullname"
@@ -76,7 +81,8 @@
     "degree course"
     "phone email"
     "telegram vk"
-    "about-me about-me"
+    "status status"
+    "test test"
 }
 
 .div-full_name {
@@ -115,8 +121,8 @@
     grid-area: vk;
 }
 
-.div-about-me {
-    grid-area: about-me;
+.div-status {
+    grid-area: status;
 }
 
 #test-result {
@@ -124,8 +130,8 @@
 }
 
 .about-me {
-    margin-top: 20px !important;
-    display: block !important;
+    margin-left: auto;
+    margin-right: auto;
     width: 480px;
     height: 300px;
     flex-shrink: 0;
@@ -136,20 +142,15 @@
 .flex-box {
     display: flex;
     align-items: flex-end;
-    justify-content:space-between;
+    /* justify-content:center; */
     gap: 63px;
 }
 
-.flex-box .vertical {
-    flex-direction: column;
-}
-
-.flex-box .center {
-    align-items: center;
-}
-
-.flex-box .test-info {
-    gap: 0;
+.stud-test-results {
+    /* margin-top: -40px; */
+    margin-left: 120px;
+    margin-right: auto;
+    height: 100px;
 }
 
 .test-info p {
@@ -159,9 +160,33 @@
     margin-bottom: 10px;
 }
 
-.card-button {
+.card-button,
+.deny-button,
+.change-status-btn {
     width: 200px;
     height: 50px;
     padding: 13px 44px;
     font-size: 20px;
+}
+
+.change-status-btn {
+    width: 300px;
+    margin-left: 80px;
+}
+
+.text,
+.info,
+.student-status {
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.stud-test-results option {
+    font-size: 17px;
+}
+
+.student-status {
+    width: 200px;
 }
