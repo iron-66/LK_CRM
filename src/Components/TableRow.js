@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import '../Styles/TableRow.css'
-import axios from "axios";
+import {Link} from "react-router-dom";
 
 const statues = {                             //Статусы студентов
     "new": 'Отправил(а) персональные данные',
@@ -18,18 +18,20 @@ export default class TableRow extends Component {
     }
 
     render() {
-        return <tr className="row">
-                    <td className="fio"><h2>{this.props.student.full_name}</h2></td>
-                    <td className="status"><h2>{statues[this.props.student.status]}</h2></td>
-                    <td className="phone-number"><h2>{this.props.student.phone}</h2></td>
-                    <td className="vk-link"><h2>{this.props.student.vk}</h2></td>
-                    <td className="email"><h2>{this.props.student.email}</h2></td>
-                    <td className="uni"><h2>{this.props.student.university}</h2></td>
-                    <td className="direction"><h2>{this.props.student.speciality}</h2></td>
-                    <td className="course"><h2>{this.props.student.course}</h2></td>
-                    <td className="degree"><h2>{this.props.student.degree}</h2></td>
-                    {/* <td><h2 className="results">{this.props.student.is_test_send}</h2></td> */}
-                    <td className="results"><h2>...</h2></td>
-                </tr>
+        return <Link to={'/student/:'+ this.props.student.id}>
+                    <tr className="row">
+                        <td className="fio"><h2>{this.props.student.full_name}</h2></td>
+                        <td className="status"><h2>{statues[this.props.student.status]}</h2></td>
+                        <td className="phone-number"><h2>{this.props.student.phone}</h2></td>
+                        <td className="vk-link"><h2>{this.props.student.vk}</h2></td>
+                        <td className="email"><h2>{this.props.student.email}</h2></td>
+                        <td className="uni"><h2>{this.props.student.university}</h2></td>
+                        <td className="direction"><h2>{this.props.student.speciality}</h2></td>
+                        <td className="course"><h2>{this.props.student.course}</h2></td>
+                        <td className="degree"><h2>{this.props.student.degree}</h2></td>
+                        {/* <td><h2 className="results">{this.props.student.is_test_send}</h2></td> */}
+                        <td className="results"><h2>...</h2></td>
+                    </tr>
+                </Link>
     }
 }
