@@ -24,6 +24,10 @@ img {
     padding: 0;
 }
 
+select:hover{
+    background: #FEB101;
+}
+
 .hidden {
     margin: 0 !important;
     padding: 0 !important;
