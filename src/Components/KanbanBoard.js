@@ -34,7 +34,7 @@ class KanbanBoard extends Component{
     }
 
     async componentDidMount(){
-        await axios("http://crm.studprzi.beget.tech/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.165.203:8000/get-students/
+        await axios("http://158.160.149.229:8000/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.165.203:8000/get-students/
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
@@ -52,6 +52,27 @@ class KanbanBoard extends Component{
 
     handleTable = () => {
         window.location.href = '/table';
+    }
+
+    handleExport = async () => {
+        try {
+            const response = await axios.get("http://158.160.149.229:8000/export-students-xlsx/", {
+                responseType: 'blob',
+            });
+            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'students.xlsx');
+            document.body.appendChild(link);
+            link.click();
+            link.parentNode.removeChild(link);
+        } catch (error) {
+            console.error("Error during exporting XLSX file", error);
+        }
+    }
+
+    handleKanban = () => {
+        window.location.href = '/';
     }
 
     searchingOnPage = (e) => {
@@ -72,7 +93,7 @@ class KanbanBoard extends Component{
                         onClick={this.ChangeVisibility}
                     />
                     <input type="text" placeholder="Поиск по странице" onChange={this.searchingOnPage} id="kanban-search-input"></input>
-                    <button className="exp-button">Экспортировать</button>
+                    <button className="exp-button" onClick={this.handleExport}>Экспортировать</button>
                     <button className="forms-button" onClick={this.handleTable}>Табличный вид</button>
                 </div>
                 <ul className="status-columns">
