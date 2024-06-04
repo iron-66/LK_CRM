@@ -52,7 +52,7 @@ class CardInfo extends Component{
         this.setState({
             page: this.props.location.state.page
         })
-        await axios(`http://158.160.165.203:8000/get-info/${id}/`) // http://crm.studprzi.beget.tech/get-info/${id}/ http://158.160.171.6:8000/get-info/${id}/
+        await axios(`http://158.160.149.229:8000/get-info/${id}/`) // http://crm.studprzi.beget.tech/get-info/${id}/ http://158.160.171.6:8000/get-info/${id}/
         .then(response => {this.setState({
                 studInfo: response.data
             })
@@ -64,7 +64,7 @@ class CardInfo extends Component{
 
         console.log([this.state.studInfo.id, e.target.value].join("&"))
         
-        await axios.patch(`http://158.160.165.203:8000/update-status/${[this.state.studInfo.id, e.target.value].join("&")}/`)
+        await axios.patch(`http://158.160.149.229:8000/update-status/${[this.state.studInfo.id, e.target.value].join("&")}/`)
         .then(response => {
             console.log(response.data)
         })
