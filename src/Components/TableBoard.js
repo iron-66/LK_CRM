@@ -3,7 +3,7 @@ import '../Styles/TableBoard.css'
 import axios from "axios";
 import TableRow from "./TableRow";
 
-const statues = {                             //Статусы студентов
+const statues = {
     "new": 'Отправил(а) персональные данные',
     "undone_test": 'Не прошёл(ла) тестирование',
     "done_test": 'Прошёл(ла) тестирование',
@@ -28,26 +28,16 @@ export default class TableBoard extends Component {
 
 
     async componentDidMount(){
-        await axios("http://158.160.149.229:8000/get-students/") //http://crm.studprzi.beget.tech/get-students/ http://158.160.131.224:8000/get-students/
+        await axios("http://crm.studprzi.beget.tech/get-students/")
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
         })})
     }
 
-    // async componentDidUpdate(){
-    //     // console.log("update")
-    //     if (this.state.IsUpdate){
-    //         console.log("updateUpdate")
-    //         this.setState({
-    //             IsUpdate: !this.state.IsUpdate
-    //         })
-    //     }
-    // }
-
     handleExport = async () => {
         try {
-            const response = await axios.get("http://158.160.149.229:8000/export-students-xlsx/", {
+            const response = await axios.get("http://crm.studprzi.beget.tech/export-students-xlsx/", {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -85,8 +75,6 @@ export default class TableBoard extends Component {
                 filteredStudentsData: this.state.studentsData.filter(s => s.status === this.state.filterStatus && s.course === this.state.filterCourse && s.full_name.toLowerCase().includes(this.state.filterFIO))
             })
         }
-        // this.state.IsUpdate = true
-        // console.log(this.state.filteredStudentsData)
     }
 
     render() {

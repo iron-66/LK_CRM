@@ -5,7 +5,7 @@ import '../Styles/KanbanBoard.css'
 import SettingsIcon from "../Files/SettingsIcon.svg"
 import CardList from './CardList'
 
-const statues = {                             //Статусы студентов
+const statues = {
     "new": 'Отправил(а) персональные данные',
     "undone_test": 'Не прошёл(ла) тестирование',
     "done_test": 'Прошёл(ла) тестирование',
@@ -34,7 +34,7 @@ class KanbanBoard extends Component{
     }
 
     async componentDidMount(){
-        await axios("http://158.160.149.229:8000/get-students/") // http://crm.studprzi.beget.tech/get-students/ http://158.160.165.203:8000/get-students/
+        await axios("http://crm.studprzi.beget.tech/get-students/")
         .then(response => {this.setState({
             studentsData: response.data,
             filteredStudentsData: response.data
@@ -56,7 +56,7 @@ class KanbanBoard extends Component{
 
     handleExport = async () => {
         try {
-            const response = await axios.get("http://158.160.149.229:8000/export-students-xlsx/", {
+            const response = await axios.get("http://crm.studprzi.beget.tech/export-students-xlsx/", {
                 responseType: 'blob',
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));

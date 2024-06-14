@@ -3,7 +3,7 @@ import '../Styles/TableRow.css'
 import {Link} from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 
-const statues = {                             //Статусы студентов
+const statues = {
     "new": 'Отправил(а) персональные данные',
     "undone_test": 'Не прошёл(ла) тестирование',
     "done_test": 'Прошёл(ла) тестирование',

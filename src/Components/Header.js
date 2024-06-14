@@ -6,7 +6,6 @@ import logo from '../Files/Logo.png'
 import menu from '../Files/Menu.svg'
 import avatar from '../Files/Avatar.svg'
 
-// Шапка сайта
 class Header extends Component {
     constructor(props){
         super(props);
